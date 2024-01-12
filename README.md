@@ -3,7 +3,7 @@ Lista Telefónica Digital
 Esta aplicação em Java é uma lista telefónica digital que permite aos utilizadores gerir os seus contactos. 
 Permite adicionar, remover, listar, pesquisar e modificar contactos, armazenando as informações dos contactos num ficheiro CSV para persistência.
 
-Utilização:
+Funcionalidades:
 
 - Adicionar um novo contacto com nome, número de telefone, email e morada.
 - Remover um contacto existente da lista.

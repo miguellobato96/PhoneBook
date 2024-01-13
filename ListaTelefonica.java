@@ -7,33 +7,38 @@ public class ListaTelefonica {
     private List<Contato> contatos;
     private static final String CSV_FILE_PATH = "contatos.csv";
 
+    // Construtor da classe ListaTelefonica
     public ListaTelefonica() {
         this.contatos = new ArrayList<>();
-        loadCSV();
+        loadCSV(); // Carrega os contatos do arquivo CSV ao instanciar a lista telefónica
     }
 
+    // Adiciona um novo contato à lista telefónica
     public void adicionarContato(Contato contato) {
         if (!contatos.contains(contato)) {
             contatos.add(contato);
-            saveCSV();
+            saveCSV(); // Guarda a lista telefónica no arquivo CSV após adicionar um contato
             System.out.println("Contato adicionado: " + contato);
         } else {
             System.out.println("Contato já existe na lista.");
         }
     }
 
+    // Remove um contato da lista telefónica
     public void removerContato(Contato contato) {
         contatos.remove(contato);
-        saveCSV();
+        saveCSV(); // Salva a lista telefónica no arquivo CSV após remover um contato
         System.out.println("Contato removido: " + contato);
     }
 
+    // Lista todos os contatos da lista telefónica
     public void listarContatos() {
         for (Contato contato : contatos) {
             System.out.println(contato);
         }
     }
 
+    // Procura um contato com base em um atributo e valor específicos
     public Contato procurarContato(String atributo, String valor) {
         for (Contato contato : contatos) {
             switch (atributo.toLowerCase()) {
@@ -64,6 +69,7 @@ public class ListaTelefonica {
         return null;
     }
 
+    // Modifica os dados de um contato específico
     public void modificarContato(String nome, Scanner scanner) {
         Contato contato = procurarContato("nome", nome);
         if (contato != null) {
@@ -105,12 +111,13 @@ public class ListaTelefonica {
                     System.out.println("Opção inválida.");
             }
 
-            saveCSV();
+            saveCSV(); // Salva a lista telefónica no arquivo CSV após modificar um contato
         } else {
             System.out.println("Contato não encontrado.");
         }
     }
 
+    // Método para guardar a lista telefónica no arquivo CSV
     private void saveCSV() {
         try (PrintWriter writer = new PrintWriter(new FileWriter(CSV_FILE_PATH))) {
             for (Contato contato : contatos) {
@@ -122,6 +129,7 @@ public class ListaTelefonica {
         }
     }
 
+    // Método para carregar a lista telefónica a partir do arquivo CSV
     private void loadCSV() {
         File file = new File(CSV_FILE_PATH);
         if (file.exists()) {
@@ -143,12 +151,14 @@ public class ListaTelefonica {
         }
     }
 
+    // Método principal (main) que inicia o programa
     public static void main(String[] args) {
         ListaTelefonica lista = new ListaTelefonica();
         Scanner scanner = new Scanner(System.in);
 
         int choice;
         do {
+            // Menu principal
             System.out.println("Menu:");
             System.out.println("1. Adicionar Contato");
             System.out.println("2. Remover Contato");
@@ -163,6 +173,7 @@ public class ListaTelefonica {
 
             switch (choice) {
                 case 1:
+                    // Adicionar um novo contato
                     System.out.print("Nome do Contato: ");
                     String nome = scanner.nextLine();
                     System.out.print("Telefone do Contato: ");
@@ -174,17 +185,35 @@ public class ListaTelefonica {
                     lista.adicionarContato(new Contato(nome, telefone, email, morada));
                     break;
                 case 2:
+                    // Remover um contato
                     System.out.print("Nome do Contato a ser removido: ");
                     String nomeRemover = scanner.nextLine();
                     lista.removerContato(lista.procurarContato("nome", nomeRemover));
                     break;
                 case 3:
+                    // Listar todos os contatos
                     lista.listarContatos();
                     break;
                 case 4:
-                    System.out.print("Nome do Contato a ser procurado: ");
+                    // Procurar um contato
+                    String atributoProcurar;
+                    do {
+                        System.out.print("Atributo pelo qual deseja procurar ('nome', 'telefone', 'email', 'morada'): ");
+                        atributoProcurar = scanner.nextLine();
+                        if (atributoProcurar.equalsIgnoreCase("nome") || 
+                            atributoProcurar.equalsIgnoreCase("telefone") || 
+                            atributoProcurar.equalsIgnoreCase("email") || 
+                            atributoProcurar.equalsIgnoreCase("morada")) {
+                            break;
+                        } else {
+                            System.out.println("Atributo inválido. Escolha entre nome, telefone, email, ou morada.");
+                        }
+                    } while (true);
+
+                    System.out.print("Digite o/a " + atributoProcurar + " do Contato a ser procurado: ");
                     String nomeProcurar = scanner.nextLine();
-                    Contato contatoEncontrado = lista.procurarContato("nome", nomeProcurar);
+
+                    Contato contatoEncontrado = lista.procurarContato(atributoProcurar, nomeProcurar);
                     if (contatoEncontrado != null) {
                         System.out.println("Contato encontrado: " + contatoEncontrado);
                     } else {
@@ -192,6 +221,7 @@ public class ListaTelefonica {
                     }
                     break;
                 case 5:
+                    // Modificar um contato
                     System.out.print("Nome do Contato a ser modificado: ");
                     String nomeModificar = scanner.nextLine();
                     lista.modificarContato(nomeModificar, scanner);

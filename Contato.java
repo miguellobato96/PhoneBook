@@ -1,9 +1,11 @@
 public class Contato {
+    // Atributos privados que representam as informações de um contato
     private String nome;
     private String telefone;
     private String email;
     private String morada;
 
+    // Construtor que inicializa um objeto Contato com as informações fornecidas
     public Contato(String nome, String telefone, String email, String morada) {
         this.nome = nome;
         this.telefone = telefone;
@@ -11,6 +13,7 @@ public class Contato {
         this.morada = morada;
     }
 
+    // Métodos de acesso para obter e definir o nome do contato
     public String getNome() {
         return nome;
     }
@@ -19,6 +22,7 @@ public class Contato {
         this.nome = nome;
     }
 
+    // Métodos de acesso para obter e definir o telefone do contato
     public String getTelefone() {
         return telefone;
     }
@@ -27,6 +31,7 @@ public class Contato {
         this.telefone = telefone;
     }
 
+    // Métodos de acesso para obter e definir o email do contato
     public String getEmail() {
         return email;
     }
@@ -35,6 +40,7 @@ public class Contato {
         this.email = email;
     }
 
+    // Métodos de acesso para obter e definir a morada do contato
     public String getMorada() {
         return morada;
     }
@@ -43,6 +49,7 @@ public class Contato {
         this.morada = morada;
     }
 
+    // Método toString para representar o objeto Contato como uma string formatada
     public String toString() {
         return "Nome: " + nome + ", Telefone: " + telefone + ", Email: " + email + ", Morada: " + morada;
     }

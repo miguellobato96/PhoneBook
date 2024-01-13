@@ -136,7 +136,7 @@ public class ListaTelefonica {
                 }
                 System.out.println("Lista carregada de " + CSV_FILE_PATH);
             } catch (IOException e) {
-                System.err.println("Erro ao carregar de CSV: " + e.getMessage());
+                System.err.println("Erro ao carregar CSV: " + e.getMessage());
             }
         } else {
             System.out.println("Criando novo arquivo CSV: " + CSV_FILE_PATH);
@@ -153,7 +153,7 @@ public class ListaTelefonica {
             System.out.println("1. Adicionar Contato");
             System.out.println("2. Remover Contato");
             System.out.println("3. Listar Contatos");
-            System.out.println("4. Buscar Contato por Nome");
+            System.out.println("4. Procurar Contato");
             System.out.println("5. Modificar Contato");
             System.out.println("0. Sair");
             System.out.print("Escolha uma opção: ");
@@ -182,7 +182,7 @@ public class ListaTelefonica {
                     lista.listarContatos();
                     break;
                 case 4:
-                    System.out.print("Nome do Contato a ser buscado: ");
+                    System.out.print("Nome do Contato a ser procurado: ");
                     String nomeProcurar = scanner.nextLine();
                     Contato contatoEncontrado = lista.procurarContato("nome", nomeProcurar);
                     if (contatoEncontrado != null) {

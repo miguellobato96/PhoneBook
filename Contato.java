@@ -1,37 +1,37 @@
-public class Contato {
-    // Atributos privados que representam as informações de um contato
-    private String nome;
-    private String telefone;
+public class Contact {
+    // Private attributes representing the information of a contact
+    private String name;
+    private String phone;
     private String email;
-    private String morada;
+    private String address;
 
-    // Construtor que inicializa um objeto Contato com as informações fornecidas
-    public Contato(String nome, String telefone, String email, String morada) {
-        this.nome = nome;
-        this.telefone = telefone;
+    // Constructor that initializes a Contact object with the provided information
+    public Contact(String name, String phone, String email, String address) {
+        this.name = name;
+        this.phone = phone;
         this.email = email;
-        this.morada = morada;
+        this.address = address;
     }
 
-    // Métodos de acesso para obter e definir o nome do contato
-    public String getNome() {
-        return nome;
+    // Access methods to get and set the name of the contact
+    public String getName() {
+        return name;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    // Métodos de acesso para obter e definir o telefone do contato
-    public String getTelefone() {
-        return telefone;
+    // Access methods to get and set the phone number of the contact
+    public String getPhone() {
+        return phone;
     }
 
-    public void setTelefone(String telefone) {
-        this.telefone = telefone;
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 
-    // Métodos de acesso para obter e definir o email do contato
+    // Access methods to get and set the email of the contact
     public String getEmail() {
         return email;
     }
@@ -40,17 +40,17 @@ public class Contato {
         this.email = email;
     }
 
-    // Métodos de acesso para obter e definir a morada do contato
-    public String getMorada() {
-        return morada;
+    // Access methods to get and set the address of the contact
+    public String getAddress() {
+        return address;
     }
 
-    public void setMorada(String morada) {
-        this.morada = morada;
+    public void setAddress(String address) {
+        this.address = address;
     }
 
-    // Método toString para representar o objeto Contato como uma string formatada
+    // toString method to represent the Contact object as a formatted string
     public String toString() {
-        return "Nome: " + nome + ", Telefone: " + telefone + ", Email: " + email + ", Morada: " + morada;
+        return "Name: " + name + ", Phone: " + phone + ", Email: " + email + ", Address: " + address;
     }
 }

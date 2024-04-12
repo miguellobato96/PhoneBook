@@ -1,12 +1,10 @@
-Lista Telefónica Digital
+Digital Phonebook
 
-Esta aplicação em Java é uma lista telefónica digital que permite aos utilizadores gerir os seus contactos. 
-Permite adicionar, remover, listar, pesquisar e modificar contactos, armazenando as informações dos contactos num ficheiro CSV para persistência.
+This Java application is a digital phonebook that allows users to manage their contacts. It enables adding, removing, listing, searching, and modifying contacts, storing contact information in a CSV file for persistence.
 
-Funcionalidades:
-
-- Adicionar um novo contacto com nome, número de telefone, email e morada.
-- Remover um contacto existente da lista.
-- Listar todos os contactos na lista telefónica.
-- Procurar um contacto por nome, número de telefone, email ou morada.
-- Modificar as informações de um contacto existente.
+Features:
+- Add a new contact with name, phone number, email, and address.
+- Remove an existing contact from the phonebook.
+- List all contacts in the phonebook.
+- Search for a contact by name, phone number, email, or address.
+- Modify the information of an existing contact.

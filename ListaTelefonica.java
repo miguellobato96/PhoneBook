@@ -3,133 +3,133 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class ListaTelefonica {
-    private List<Contato> contatos;
-    private static final String CSV_FILE_PATH = "contatos.csv";
+public class Phonebook {
+    private List<Contact> contacts;
+    private static final String CSV_FILE_PATH = "contacts.csv";
 
-    // Construtor da classe ListaTelefonica
-    public ListaTelefonica() {
-        this.contatos = new ArrayList<>();
-        loadCSV(); // Carrega os contatos do arquivo CSV ao instanciar a lista telefónica
+    // Constructor of the Phonebook class
+    public Phonebook() {
+        this.contacts = new ArrayList<>();
+        loadCSV(); // Loads contacts from the CSV file when instantiating the phonebook
     }
 
-    // Adiciona um novo contato à lista telefónica
-    public void adicionarContato(Contato contato) {
-        if (!contatos.contains(contato)) {
-            contatos.add(contato);
-            saveCSV(); // Guarda a lista telefónica no arquivo CSV após adicionar um contato
-            System.out.println("Contato adicionado: " + contato);
+    // Adds a new contact to the phonebook
+    public void addContact(Contact contact) {
+        if (!contacts.contains(contact)) {
+            contacts.add(contact);
+            saveCSV(); // Saves the phonebook to the CSV file after adding a contact
+            System.out.println("Contact added: " + contact);
         } else {
-            System.out.println("Contato já existe na lista.");
+            System.out.println("Contact already exists in the list.");
         }
     }
 
-    // Remove um contato da lista telefónica
-    public void removerContato(Contato contato) {
-        contatos.remove(contato);
-        saveCSV(); // Salva a lista telefónica no arquivo CSV após remover um contato
-        System.out.println("Contato removido: " + contato);
+    // Removes a contact from the phonebook
+    public void removeContact(Contact contact) {
+        contacts.remove(contact);
+        saveCSV(); // Saves the phonebook to the CSV file after removing a contact
+        System.out.println("Contact removed: " + contact);
     }
 
-    // Lista todos os contatos da lista telefónica
-    public void listarContatos() {
-        for (Contato contato : contatos) {
-            System.out.println(contato);
+    // Lists all contacts in the phonebook
+    public void listContacts() {
+        for (Contact contact : contacts) {
+            System.out.println(contact);
         }
     }
 
-    // Procura um contato com base em um atributo e valor específicos
-    public Contato procurarContato(String atributo, String valor) {
-        for (Contato contato : contatos) {
-            switch (atributo.toLowerCase()) {
-                case "nome":
-                    if (contato.getNome().equalsIgnoreCase(valor)) {
-                        return contato;
+    // Searches for a contact based on a specific attribute and value
+    public Contact searchContact(String attribute, String value) {
+        for (Contact contact : contacts) {
+            switch (attribute.toLowerCase()) {
+                case "name":
+                    if (contact.getName().equalsIgnoreCase(value)) {
+                        return contact;
                     }
                     break;
-                case "telefone":
-                    if (contato.getTelefone().equalsIgnoreCase(valor)) {
-                        return contato;
+                case "phone":
+                    if (contact.getPhone().equalsIgnoreCase(value)) {
+                        return contact;
                     }
                     break;
                 case "email":
-                    if (contato.getEmail().equalsIgnoreCase(valor)) {
-                        return contato;
+                    if (contact.getEmail().equalsIgnoreCase(value)) {
+                        return contact;
                     }
                     break;
-                case "morada":
-                    if (contato.getMorada().equalsIgnoreCase(valor)) {
-                        return contato;
+                case "address":
+                    if (contact.getAddress().equalsIgnoreCase(value)) {
+                        return contact;
                     }
                     break;
                 default:
-                    System.out.println("Atributo inválido. Escolha entre nome, telefone, email, ou morada.");
+                    System.out.println("Invalid attribute. Choose between name, phone, email, or address.");
             }
         }
         return null;
     }
 
-    // Modifica os dados de um contato específico
-    public void modificarContato(String nome, Scanner scanner) {
-        Contato contato = procurarContato("nome", nome);
-        if (contato != null) {
-            System.out.println("Escolha o atributo a modificar:");
-            System.out.println("1. Nome");
-            System.out.println("2. Telefone");
+    // Modifies the data of a specific contact
+    public void modifyContact(String name, Scanner scanner) {
+        Contact contact = searchContact("name", name);
+        if (contact != null) {
+            System.out.println("Choose the attribute to modify:");
+            System.out.println("1. Name");
+            System.out.println("2. Phone");
             System.out.println("3. Email");
-            System.out.println("4. Morada");
+            System.out.println("4. Address");
 
             int choice = scanner.nextInt();
             scanner.nextLine();
 
             switch (choice) {
                 case 1:
-                    System.out.print("Novo Nome: ");
-                    String novoNome = scanner.nextLine();
-                    contato.setNome(novoNome);
-                    System.out.println("Nome modificado para " + novoNome);
+                    System.out.print("New Name: ");
+                    String newName = scanner.nextLine();
+                    contact.setName(newName);
+                    System.out.println("Name modified to " + newName);
                     break;
                 case 2:
-                    System.out.print("Novo Telefone: ");
-                    String novoTelefone = scanner.nextLine();
-                    contato.setTelefone(novoTelefone);
-                    System.out.println("Telefone modificado para " + novoTelefone);
+                    System.out.print("New Phone: ");
+                    String newPhone = scanner.nextLine();
+                    contact.setPhone(newPhone);
+                    System.out.println("Phone modified to " + newPhone);
                     break;
                 case 3:
-                    System.out.print("Novo Email: ");
-                    String novoEmail = scanner.nextLine();
-                    contato.setEmail(novoEmail);
-                    System.out.println("Email modificado para " + novoEmail);
+                    System.out.print("New Email: ");
+                    String newEmail = scanner.nextLine();
+                    contact.setEmail(newEmail);
+                    System.out.println("Email modified to " + newEmail);
                     break;
                 case 4:
-                    System.out.print("Nova Morada: ");
-                    String novaMorada = scanner.nextLine();
-                    contato.setMorada(novaMorada);
-                    System.out.println("Morada modificada para " + novaMorada);
+                    System.out.print("New Address: ");
+                    String newAddress = scanner.nextLine();
+                    contact.setAddress(newAddress);
+                    System.out.println("Address modified to " + newAddress);
                     break;
                 default:
-                    System.out.println("Opção inválida.");
+                    System.out.println("Invalid option.");
             }
 
-            saveCSV(); // Salva a lista telefónica no arquivo CSV após modificar um contato
+            saveCSV(); // Saves the phonebook to the CSV file after modifying a contact
         } else {
-            System.out.println("Contato não encontrado.");
+            System.out.println("Contact not found.");
         }
     }
 
-    // Método para guardar a lista telefónica no arquivo CSV
+    // Method to save the phonebook to the CSV file
     private void saveCSV() {
         try (PrintWriter writer = new PrintWriter(new FileWriter(CSV_FILE_PATH))) {
-            for (Contato contato : contatos) {
-                writer.println(contato.getNome() + "," + contato.getTelefone() + "," + contato.getEmail() + "," + contato.getMorada());
+            for (Contact contact : contacts) {
+                writer.println(contact.getName() + "," + contact.getPhone() + "," + contact.getEmail() + "," + contact.getAddress());
             }
-            System.out.println("Lista guardada em " + CSV_FILE_PATH);
+            System.out.println("Phonebook saved to " + CSV_FILE_PATH);
         } catch (IOException e) {
-            System.err.println("Erro ao guardar CSV: " + e.getMessage());
+            System.err.println("Error saving CSV: " + e.getMessage());
         }
     }
 
-    // Método para carregar a lista telefónica a partir do arquivo CSV
+    // Method to load the phonebook from the CSV file
     private void loadCSV() {
         File file = new File(CSV_FILE_PATH);
         if (file.exists()) {
@@ -138,99 +138,99 @@ public class ListaTelefonica {
                 while ((line = reader.readLine()) != null) {
                     String[] data = line.split(",");
                     if (data.length == 4) {
-                        Contato contato = new Contato(data[0], data[1], data[2], data[3]);
-                        contatos.add(contato);
+                        Contact contact = new Contact(data[0], data[1], data[2], data[3]);
+                        contacts.add(contact);
                     }
                 }
-                System.out.println("Lista carregada de " + CSV_FILE_PATH);
+                System.out.println("Phonebook loaded from " + CSV_FILE_PATH);
             } catch (IOException e) {
-                System.err.println("Erro ao carregar CSV: " + e.getMessage());
+                System.err.println("Error loading CSV: " + e.getMessage());
             }
         } else {
-            System.out.println("Criando novo arquivo CSV: " + CSV_FILE_PATH);
+            System.out.println("Creating new CSV file: " + CSV_FILE_PATH);
         }
     }
 
-    // Método principal (main) que inicia o programa
+    // Main method that starts the program
     public static void main(String[] args) {
-        ListaTelefonica lista = new ListaTelefonica();
+        Phonebook phonebook = new Phonebook();
         Scanner scanner = new Scanner(System.in);
 
         int choice;
         do {
-            // Menu principal
+            // Main menu
             System.out.println("Menu:");
-            System.out.println("1. Adicionar Contato");
-            System.out.println("2. Remover Contato");
-            System.out.println("3. Listar Contatos");
-            System.out.println("4. Procurar Contato");
-            System.out.println("5. Modificar Contato");
-            System.out.println("0. Sair");
-            System.out.print("Escolha uma opção: ");
+            System.out.println("1. Add Contact");
+            System.out.println("2. Remove Contact");
+            System.out.println("3. List Contacts");
+            System.out.println("4. Search Contact");
+            System.out.println("5. Modify Contact");
+            System.out.println("0. Exit");
+            System.out.print("Choose an option: ");
 
             choice = scanner.nextInt();
             scanner.nextLine();
 
             switch (choice) {
                 case 1:
-                    // Adicionar um novo contato
-                    System.out.print("Nome do Contato: ");
-                    String nome = scanner.nextLine();
-                    System.out.print("Telefone do Contato: ");
-                    String telefone = scanner.nextLine();
-                    System.out.print("Email do Contato: ");
+                    // Add a new contact
+                    System.out.print("Contact Name: ");
+                    String name = scanner.nextLine();
+                    System.out.print("Contact Phone: ");
+                    String phone = scanner.nextLine();
+                    System.out.print("Contact Email: ");
                     String email = scanner.nextLine();
-                    System.out.print("Morada do Contato: ");
-                    String morada = scanner.nextLine();
-                    lista.adicionarContato(new Contato(nome, telefone, email, morada));
+                    System.out.print("Contact Address: ");
+                    String address = scanner.nextLine();
+                    phonebook.addContact(new Contact(name, phone, email, address));
                     break;
                 case 2:
-                    // Remover um contato
-                    System.out.print("Nome do Contato a ser removido: ");
-                    String nomeRemover = scanner.nextLine();
-                    lista.removerContato(lista.procurarContato("nome", nomeRemover));
+                    // Remove a contact
+                    System.out.print("Name of Contact to be removed: ");
+                    String nameToRemove = scanner.nextLine();
+                    phonebook.removeContact(phonebook.searchContact("name", nameToRemove));
                     break;
                 case 3:
-                    // Listar todos os contatos
-                    lista.listarContatos();
+                    // List all contacts
+                    phonebook.listContacts();
                     break;
                 case 4:
-                    // Procurar um contato
-                    String atributoProcurar;
+                    // Search for a contact
+                    String attributeToSearch;
                     do {
-                        System.out.print("Atributo pelo qual deseja procurar ('nome', 'telefone', 'email', 'morada'): ");
-                        atributoProcurar = scanner.nextLine();
-                        if (atributoProcurar.equalsIgnoreCase("nome") || 
-                            atributoProcurar.equalsIgnoreCase("telefone") || 
-                            atributoProcurar.equalsIgnoreCase("email") || 
-                            atributoProcurar.equalsIgnoreCase("morada")) {
+                        System.out.print("Attribute to search by ('name', 'phone', 'email', 'address'): ");
+                        attributeToSearch = scanner.nextLine();
+                        if (attributeToSearch.equalsIgnoreCase("name") || 
+                            attributeToSearch.equalsIgnoreCase("phone") || 
+                            attributeToSearch.equalsIgnoreCase("email") || 
+                            attributeToSearch.equalsIgnoreCase("address")) {
                             break;
                         } else {
-                            System.out.println("Atributo inválido. Escolha entre nome, telefone, email, ou morada.");
+                            System.out.println("Invalid attribute. Choose between name, phone, email, or address.");
                         }
                     } while (true);
 
-                    System.out.print("Digite o/a " + atributoProcurar + " do Contato a ser procurado: ");
-                    String nomeProcurar = scanner.nextLine();
+                    System.out.print("Enter the " + attributeToSearch + " of the Contact to search for: ");
+                    String valueToSearch = scanner.nextLine();
 
-                    Contato contatoEncontrado = lista.procurarContato(atributoProcurar, nomeProcurar);
-                    if (contatoEncontrado != null) {
-                        System.out.println("Contato encontrado: " + contatoEncontrado);
+                    Contact foundContact = phonebook.searchContact(attributeToSearch, valueToSearch);
+                    if (foundContact != null) {
+                        System.out.println("Contact found: " + foundContact);
                     } else {
-                        System.out.println("Contato não encontrado.");
+                        System.out.println("Contact not found.");
                     }
                     break;
                 case 5:
-                    // Modificar um contato
-                    System.out.print("Nome do Contato a ser modificado: ");
-                    String nomeModificar = scanner.nextLine();
-                    lista.modificarContato(nomeModificar, scanner);
+                    // Modify a contact
+                    System.out.print("Name of Contact to be modified: ");
+                    String nameToModify = scanner.nextLine();
+                    phonebook.modifyContact(nameToModify, scanner);
                     break;
                 case 0:
-                    System.out.println("Saindo do programa...");
+                    System.out.println("Exiting the program...");
                     break;
                 default:
-                    System.out.println("Opção inválida. Tente novamente.");
+                    System.out.println("Invalid option. Please try again.");
             }
 
         } while (choice != 0);
